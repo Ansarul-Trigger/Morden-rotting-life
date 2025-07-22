@@ -13,14 +13,8 @@
       scroll-behavior: smooth;
       background: #fff;
       color: white;
-      scroll-behavior: smooth;
     }
 
-    /* section {
-      width: 100%;
-      min-height: 100vh;
-      position: relative;
-    } */
     .title-page {
       position: relative;
       height: 920px;
@@ -56,10 +50,12 @@
     }
 
     .nav-links {
-      display: flex;
-      gap: 2rem;
-      margin-top: -20px;
-    }
+  display: flex;
+  gap: 2rem;
+  margin-top: -20px;
+  flex-wrap: wrap;
+  position: relative; /* Add this */
+}
     .nav-links a {
       color: #EF4123;
       text-decoration: none;
@@ -70,9 +66,86 @@
       font-family: "Arial Black",sans-serif;
     }
     .nav-links a:hover {
-      color: rgba(239, 65, 35, 0.7)
-;
+      color: rgba(239, 65, 35, 0.7);
     }
+
+/* Dropdown Wrapper */
+.work-dropdown {
+  position: relative;
+  width: auto; /* Let it size naturally */
+  flex-grow: 1; /* Allow it to fill remaining space if needed */
+}
+
+/* Dropdown Button */
+.dropdown-btn {
+  width: 100%;
+  cursor: pointer;
+  color: #EF4123;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: 800;
+  padding: 0.6rem 1.4rem;
+  transition: all 0.3s ease;
+  font-family: "Arial Black",sans-serif;  
+}
+
+.dropdown-btn:hover {
+  color: rgba(239, 65, 35, 0.7)
+}
+
+/* Dropdown List */
+.dropdown-list {
+  display: none;
+  position: absolute;
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  z-index: 1000;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  width: max-content; /* Or 100% depending on desired size */
+  min-width: 800px; /* Optional: prevent it from being too narrow */
+  max-width: 100%;
+}
+
+/* Dropdown Links */
+.dropdown-list a {
+  display: block;
+  padding: 12px 16px;
+  font-size: 1rem;
+  color: #231f20;
+  text-decoration: none;
+  transition: background 0.2s ease;
+  word-wrap: break-word;
+}
+
+.dropdown-list a:hover {
+  background-color: #f7f7f7;
+}
+
+/* Show dropdown when active */
+.dropdown-list.show {
+  display: block;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .dropdown-btn,
+  .dropdown-list a {
+    font-size: 0.95rem;
+    padding: 12px 14px;
+  }
+
+  .work-section h2 {
+    font-size: 2rem;
+  }
+}
+
+
+
+
+
 
   /* about section */
    .logo-section {
@@ -396,101 +469,6 @@
   height: 50px; /* Adjust height as needed */
   background: linear-gradient(to bottom, #F15722 50%, #7C1816 50%);
 }
-
-/* Work Section */
-.work-section {
-  background: #f9f9f9;
-  color: #231f20;
-  padding: 4rem 2rem;
-  font-family: "Arial Black",sans-serif;
-}
-
-/* Work Section Heading */
-.work-section h2 {
-  font-size: 2.5rem;
-  text-align: center;
-  margin-bottom: 2.5rem;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  position: relative;
-  padding-bottom: 0.8rem;
-  border-bottom: 2px solid #444;
-  color: #231f20;
-}
-
-/* Dropdown Wrapper */
-.work-dropdown {
-  position: relative;
-  max-width: 450px;
-  margin: 0 auto;
-  width: 100%;
-}
-
-/* Dropdown Button */
-.dropdown-btn {
-  width: 100%;
-  padding: 14px 18px;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  background-color: #fff;
-  text-align: left;
-  cursor: pointer;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  transition: all 0.3s ease;
-}
-
-.dropdown-btn:hover {
-  background-color: #f0f0f0;
-}
-
-/* Dropdown List */
-.dropdown-list {
-  display: none;
-  position: absolute;
-  width: 100%;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-top: none;
-  border-radius: 0 0 8px 8px;
-  z-index: 1000;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
-
-/* Dropdown Links */
-.dropdown-list a {
-  display: block;
-  padding: 12px 16px;
-  font-size: 1rem;
-  color: #231f20;
-  text-decoration: none;
-  transition: background 0.2s ease;
-  word-wrap: break-word;
-}
-
-.dropdown-list a:hover {
-  background-color: #f7f7f7;
-}
-
-/* Show dropdown when active */
-.dropdown-list.show {
-  display: block;
-}
-
-/* Responsive adjustments */
-@media (max-width: 480px) {
-  .dropdown-btn,
-  .dropdown-list a {
-    font-size: 0.95rem;
-    padding: 12px 14px;
-  }
-
-  .work-section h2 {
-    font-size: 2rem;
-  }
-}
-
-
 
 
 /* page-1 */
@@ -1366,15 +1344,15 @@
   position: relative;
   z-index: 3;
   gap: 20px;
+  max-height: 900px;
 }
 
 .lit-left {
-  flex: 1;
+   flex: 0 0 40%;
   padding: 40px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-   flex: 0 0 40%;
 }
 
 .lit-left h1 {
@@ -1409,14 +1387,14 @@
 }
 
 .lit-right {
-  flex: 1;
+  height: auto;
+  align-items: stretch; /* ensure image can stretch full height */
 }
 
 .lit-right img {
+  height: 100%;
   width: 100%;
-  height: auto;
-  object-fit: cover;
-  display: block;
+  object-fit: fill;
 }
 
 .lit-banner {
@@ -1429,25 +1407,14 @@
 .lit-pdf .pdf-link span{
   color: #fff;
 }
-/* Responsive styles for Literature section */
+
+/* Responsive styles for screens below 1200px */
 @media (max-width: 1200px) {
-  .lit-content {
-    flex-direction: column;
-  }
-
-  .lit-left,
-  .lit-right {
-    width: 100%;
-  }
-
   .lit-left {
-    margin-bottom: 20px;
+    flex: 0 0 40%;
+    padding: 30px;
   }
-}
 
-
-
-@media (max-width: 1024px) {
   .lit-left h1 {
     font-size: 28px;
   }
@@ -1456,30 +1423,18 @@
     font-size: 20px;
   }
 
-  .lit-right img {
-    height: 600px;
-  }
+.lit-right {
+  height: auto;
+  align-items: stretch; /* ensure image can stretch full height */
+}
+
+.lit-right img {
+  height: 100%;
+  width: 100%;
+  object-fit: fill;
 }
 
 
-
-
-
-@media (max-width: 768px) {
-  .lit-content {
-    flex-direction: column;
-  }
-
-  .lit-left,
-  .lit-right {
-    padding: 20px;
-    width: 100%;
-  }
-
-  .lit-right img {
-    height: auto;
-    max-height: 400px;
-  }
 
   .lit-line {
     width: 90%;
@@ -1487,24 +1442,65 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 1024px) {
+  .lit-left {
+    flex: 0 0 40%;
+    padding: 30px;
+  }
+
+  .lit-left h1 {
+    font-size: 28px;
+  }
+
+  .lit-left p {
+    font-size: 20px;
+  }
+
+ .lit-right {
+  height: auto;
+  align-items: stretch; /* ensure image can stretch full height */
+}
+
+.lit-right img {
+  height: 100%;
+  width: 100%;
+  object-fit: fill;
+}
+
+
+  .lit-line {
+    width: 90%;
+    left: 5%;
+  }
+}
+
+
+
+@media (max-width: 768px) {
+  .lit-left {
+    padding: 20px;
+  }
+
   .lit-left h1 {
     font-size: 22px;
-    line-height: 1.4;
   }
 
   .lit-left p {
     font-size: 16px;
   }
+}
 
-  .lit-pdf {
-    font-size: 14px;
+@media (max-width: 480px) {
+  .lit-left {
+    padding: 15px;
   }
 
-  .lit-right img {
-    max-height: 300px;
-    width: 100%;
-    object-fit: cover;
+  .lit-left h1 {
+    font-size: 15px;
+  }
+
+  .lit-left p {
+    font-size: 10px;
   }
 
   .lit-line {
@@ -1512,11 +1508,7 @@
     left: 5%;
   }
 
-  .lit-container {
-    padding: 10px;
-  }
 }
-
 
 
 
@@ -1697,138 +1689,154 @@
 }
 
 
-/* book review */
-.book-review {
-  background: #F7F5E4;
-  width: 100%;
-}
+/* Book Review section */
 
 .book-container {
+  background-color: #F7F5E4;
+  position: relative;
+  height: auto;
+  overflow: hidden;
+}
+
+.book-content {
   display: flex;
-  flex-wrap: nowrap;
-  flex-direction: row;
-  align-items: flex-start;
+  height: 100%;
+  position: relative;
+  z-index: 3;
+  gap: 20px;
+  max-height: 900px;
+}
+
+.book-left {
+  flex: 0 0 40%;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  gap: 40px;
-  padding: 80px;
 }
 
-
-.text-section {
-  flex: 0 0 50%;
-  max-width: 50%;
-  min-width: 300px;
-}
-
-.text-section h1 {
+.book-left h1 {
+  color: #231F20;
   font-size: 39.99px;
   font-weight: 900;
-  margin-bottom: 20px;
-  color: #231F20;
+  margin: 0 0 20px 0;
+  font-family: "Arial Black", sans-serif;
+  margin-top: 20px;
 }
 
-.text-section p {
-  font-size: 1.25rem;
-  font-weight: 900;
+.book-left p {
+  font-size: 22px;
+  font-weight: 800;
+  color: #231F20;
   line-height: 1.6;
-  color: #231F20;
-  margin-top: 80px;
-}
-
-.pdf-link {
+  font-family: "Arial Black", sans-serif;
   margin-top: 30px;
-  font-size: 1rem;
-  text-align: center;
 }
 
-.image-section {
-  flex: 0 0 50%;
-  max-width: 50%;
-  min-width: 300px;
+.book-pdf {
+  margin-top: 20px;
+  font-weight: 900;
 }
 
-.image-section img {
-  width: 100%;
-  max-width: 100%;
-  height: auto;
+.book-pdf span {
   display: block;
-  margin: 0 auto;
+  font-weight: normal;
+  color: #231F20;
+  font-family: "Arial Black", sans-serif;
+  letter-spacing: 1px;
 }
 
-.book-pdf{
-   margin-top: 120px;
-} 
-
-
-@media (min-width: 993px) and (max-width: 1200px) {
-  .text-section {
-    flex: 0 0 50%;
-    max-width: 40%;
-  }
-
-.text-section h1 {
-    font-size: 20.99px;
+.book-right {
+  height: auto;
+  align-items: stretch;
 }
 
-
- .text-section p {
-        font-size: 15px;
-        margin-top: 32px;
-    }
-
-  .image-section {
-    flex: 0 0 50%;
-    max-width: 60%;
-  }
+.book-right img {
+  height: 100%;
+  width: 100%;
+  object-fit: fill;
 }
 
-/* Medium Devices (Tablets) */
-@media (max-width: 992px) {
-  .book-section {
-  margin-top: 0px;
+.book-banner {
+  height: 30px;
+  background-color: #F5D3C5;
+  margin: 0;
+  padding: 0;
 }
 
-  .book-container {
-    flex-direction: column;
-    gap: 30px;
+/* Responsive */
+@media (max-width: 1200px) {
+  .book-left {
+    flex: 0 0 40%;
     padding: 30px;
   }
 
-  .text-section,
-  .image-section {
-    flex: 1 1 100%;
-    max-width: 100%;
+  .book-left h1 {
+    font-size: 28px;
   }
 
-  .text-section h1 {
-    font-size: 1.75rem;
+  .book-left p {
+    font-size: 20px;
   }
 
-  .text-section p {
-    font-size: 1.1rem;
+  .book-line {
+    width: 90%;
+    left: 5%;
   }
 }
 
-/* Small Devices (Phones) */
-@media (max-width: 576px) {
-  .book-container {
+@media (max-width: 1024px) {
+  .book-left {
+    flex: 0 0 40%;
+    padding: 30px;
+  }
+
+  .book-left h1 {
+    font-size: 28px;
+  }
+
+  .book-left p {
+    font-size: 20px;
+  }
+
+  .book-line {
+    width: 90%;
+    left: 5%;
+  }
+}
+
+@media (max-width: 768px) {
+  .book-left {
     padding: 20px;
-    gap: 20px;
   }
 
-  .text-section h1 {
-    font-size: 1.4rem;
+  .book-left h1 {
+    font-size: 22px;
   }
 
-  .text-section p {
-    font-size: 1rem;
-  }
-
-  .pdf-link {
-    font-size: 0.95rem;
+  .book-left p {
+    font-size: 16px;
   }
 }
 
+@media (max-width: 480px) {
+  .book-left {
+    padding: 15px;
+  }
+
+  .book-left h1 {
+    font-size: 15px;
+  }
+
+  .book-left p {
+    font-size: 10px;
+  }
+
+  .book-line {
+    width: 90%;
+    left: 5%;
+  }
+}
 
 
 
