@@ -40,8 +40,25 @@
     </div>
       <div class="nav-links">
         <a href="#about">About</a>
-        <a href="#work">Work</a>
-      </div>
+
+          <!-- Dropdown Menu for Articles -->
+          <nav class="work-dropdown">
+          <p class="dropdown-btn" id="dropdownBtn">Work</p>
+          <div class="dropdown-list" id="dropdownList">
+            <a href="#essay1">Vulnerabilities in Russian Weapons Systems from Chinese Microelectronics</a>
+            <a href="#essay2"> Responsibilities of nuclear weapons and non-nuclear weapons states under the Treaty...</a>
+            <a href="#essay3">Defence Economics Dilemma:Risk vs. Innovation</a>
+            <a href="#essay4">Iran’s Nuclear Program and Strategic Intentions</a>
+            <a href="#essay5">Deterrence and Compellence: Schelling’s Concepts and the Dynamics of Bargaining Power</a>
+            <a href="#essay6">A literature review on modern Sino-Russian relations analysis</a>
+            <a href="#essay7">MC48, Gaither, and Killian: Shaping U.S. Concepts of Deterrence During the Cold War</a>
+            <a href="#essay8">The book review of "The Rise and Fall of the Great Powers: economic change and military conflict from 1500-2000" by Paul Kennedy, 1987</a>
+            <a href="#essay9">Massive Retaliation vs Flexible Response</a>
+          </div>
+        </nav>
+    </div>
+
+
     </div>
   </section>
 
@@ -121,27 +138,6 @@
 
    <!-- about section end-->
 
-
- <!-- Work Section -->
-<section id="work" class="work-section">
-  <h2>Work</h2>
-
-  <!-- Dropdown Menu for Articles -->
-  <nav class="work-dropdown">
-    <button class="dropdown-btn" id="dropdownBtn">Browse Articles ▼</button>
-    <div class="dropdown-list" id="dropdownList">
-      <a href="#essay1">Vulnerabilities in Russian Weapons Systems from Chinese Microelectronics</a>
-      <a href="#essay2"> Responsibilities of nuclear weapons and non-nuclear weapons states under the Treaty...</a>
-      <a href="#essay3">Defence Economics Dilemma:Risk vs. Innovation</a>
-       <a href="#essay4">Iran’s Nuclear Program and Strategic Intentions</a>
-       <a href="#essay5">Deterrence and Compellence: Schelling’s Concepts and the Dynamics of Bargaining Power</a>
-       <a href="#essay6">A literature review on modern Sino-Russian relations analysis</a>
-       <a href="#essay7">MC48, Gaither, and Killian: Shaping U.S. Concepts of Deterrence During the Cold War</a>
-       <a href="#essay8">The book review of "The Rise and Fall of the Great Powers: economic change and military conflict from 1500-2000" by Paul Kennedy, 1987</a>
-       <a href="#essay9">Massive Retaliation vs Flexible Response</a>
-    </div>
-  </nav>
-</section>
 
 <!-- page-1 -->
 <section class="research-section" id="essay1">
@@ -535,12 +531,12 @@
   
 </section>
 
+<!-- book-review-section -->
 
-<!-- book review -->
- <section class="book-section" id="essay8">
-  <div class="ana-brown-section MC48-off">
+<section class="book-review-section" id="essay8">
+   <div class="ana-brown-section">
     <div class="ana-brown-name">
-      <div class="first">ANA</div>
+      <div class="first MC48-m">ANA</div>
       <div class="underline"></div>
       <div class="last">BROWN</div>
     </div>
@@ -549,17 +545,16 @@
     </div>
   </div>
 
-  <!-- main-body -->
-  <div class="book-review">
-    <div class="book-container">
-      <div class="text-section">
-        <h1>
-          The book review of "The Rise and Fall of the Great Powers: economic change and military conflict from 1500-2000" by Paul Kennedy, 1987
-        </h1>
-        <p>
-          This book review examines The Rise and Fall of the Great Powers: Economic Change and Military Conflict from 1500-2000, written by Paul Kennedy and published in 1987. Kennedy explores how shifts in economic strength and military capability have shaped the fortunes of major powers over five centuries, arguing that economic resources ultimately underpin military dotminance. The review evaluates Kennedy’s thesis, his use of historical evidence, and the relevance of his insights for understanding contemporary global power dynamics.
-        </p>
-           <div class="book-pdf">
+  <div class="book-container">
+    <div class="book-content">
+      <div class="book-left">
+        <div>
+          <h1>The book review of "The Rise and Fall of the Great Powers: economic change and military conflict from 1500-2000" by Paul Kennedy, 1987</h1>
+          <p>
+           This book review examines The Rise and Fall of the Great Powers: Economic Change and Military Conflict from 1500-2000, written by Paul Kennedy and published in 1987. Kennedy explores how shifts in economic strength and military capability have shaped the fortunes of major powers over five centuries, arguing that economic resources ultimately underpin military dotminance. The review evaluates Kennedy’s thesis, his use of historical evidence, and the relevance of his insights for understanding contemporary global power dynamics.
+          </p>
+        </div>
+        <div class="book-pdf">
             <p class="pdf-link">
               <span onclick="showMessage()">PDF</span>
             </p>
@@ -567,11 +562,10 @@
               <a href="image/pdf/Book Review.pdf" target="_blank">Download Full PDF</a>
             </div>
           </div>
-
       </div>
 
-      <div class="image-section">
-        <img src="image/7.jpeg" alt="Book Kiosk">
+      <div class="book-right">
+        <img src="image/7.jpeg" alt="Book Review Image">
       </div>
     </div>
   </div>
@@ -664,48 +658,65 @@
 
 <!-- password protect pdf function -->
 
+
 <script>
-  // Master password (yours)
-  const masterPassword = "Master123"; // Replace with your real master password
+  // Master password (permanent)
+  const masterPassword = "Master123";   //your masterPassword you can change this
 
-  // Simulated one-time password store
-  let oneTimePasswords = ["abc123", "xyz789"]; // Add one-time codes here
+  // Temporary passwords with timestamp (ISO string format)
+  let oneTimePasswords = [
+    { code: "abc123", createdAt: "2025-07-21T10:00:00Z" }, //your oneTimePasswords you can change this
+    { code: "xyz789", createdAt: "2025-07-21T15:30:00Z" }  //your oneTimePasswords you can change this
+    // Add more OTPs here with the correct timestamp (UTC)
+  ];
 
+  // Show message and start verification
   function showMessage() {
     alert("All essays are free.\n\nPlease get in touch to get the password.");
     verifyPassword();
   }
 
+  // Check password
   function verifyPassword() {
     const password = prompt("Enter the password to access the PDF:");
 
     if (password === masterPassword) {
       grantAccess();
+      return;
+    }
+
+    const now = new Date();
+
+    // Check if OTP exists and is still valid (within 24 hours)
+    const index = oneTimePasswords.findIndex(item => {
+      return item.code === password && (now - new Date(item.createdAt)) <= 86400000; // 24 hrs in ms
+    });
+
+    if (index !== -1) {
+      oneTimePasswords.splice(index, 1); // Remove used OTP
+      grantAccess();
     } else {
-      const index = oneTimePasswords.indexOf(password);
-      if (index !== -1) {
-        oneTimePasswords.splice(index, 1); // remove the used one-time password
-        grantAccess();
-      } else {
-        alert("Incorrect or expired password. Please try again.");
-      }
+      alert("Incorrect or expired password. Please try again.");
     }
   }
 
- function grantAccess() {
-  document.getElementById('pdf-link').style.display = 'block';
-  window.open("image/pdf/Book Review.pdf", "_blank"); // Automatically opens the PDF
-}
+  // Show PDF
+  function grantAccess() {
+    document.getElementById('pdf-link').style.display = 'block';
+    window.open("image/pdf/Book Review.pdf", "_blank");
+  }
 
-
-  // OPTIONAL: Add this in developer console to generate new one-time passwords
+  // Optional: Generate new OTP in developer console
   // function generateOneTimePassword() {
   //   const otp = Math.random().toString(36).substring(2, 8);
-  //   oneTimePasswords.push(otp);
-  //   console.log("One-time password generated:", otp);
+  //   const createdAt = new Date().toISOString();
+  //   oneTimePasswords.push({ code: otp, createdAt });
+  //   console.log("Generated OTP:", otp, "Valid until:", new Date(Date.now() + 86400000).toLocaleString());
   //   return otp;
   // }
 </script>
+
+
 
 </body>
 </html>
