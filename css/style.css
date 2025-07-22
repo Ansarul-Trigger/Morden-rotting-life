@@ -106,7 +106,7 @@
   z-index: 1000;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   width: max-content; /* Or 100% depending on desired size */
-  min-width: 800px; /* Optional: prevent it from being too narrow */
+  min-width: 513px; /* Optional: prevent it from being too narrow */
   max-width: 100%;
 }
 
